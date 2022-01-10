@@ -1,0 +1,10 @@
+<phpunit cacheResult="false" bootstrap="./bootstrap.php">
+    <testsuites>
+        <testsuite name="Commissions">
+            <directory>./Unit/</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="/tmp/report"/>
+    </logging>
+</phpunit>

@@ -1,0 +1,23 @@
+{
+    "name": "smolarium/commissions",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Smolarium\\Commissions\\": "src/",
+            "Smolarium\\Commissions\\Tests\\Unit\\": "tests/Unit/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artur Smolarski",
+            "email": "artur.smolarski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "symfony/console": "5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
