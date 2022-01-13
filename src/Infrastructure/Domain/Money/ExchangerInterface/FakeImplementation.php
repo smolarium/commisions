@@ -9,7 +9,7 @@ use Smolarium\Commissions\Domain\Money\Exchanger\UnknownCourse;
 use Smolarium\Commissions\Domain\Money\Currency;
 use Smolarium\Commissions\Domain\Money\ExchangerInterface;
 
-class InMemoryImplementation implements ExchangerInterface
+class FakeImplementation implements ExchangerInterface
 {
     private const knownCourses = [
         'EUR' => ['EUR' => 1],

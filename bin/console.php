@@ -6,19 +6,11 @@ require(__DIR__ . '/../vendor/autoload.php');
 
 use Symfony\Component\Console\Application;
 use Smolarium\Commissions\Infrastructure\Console\Command\ProcessInputFile;
-use Smolarium\Commissions\Domain\Commission\Calculator;
-use Smolarium\Commissions\Infrastructure\Domain\CreditCard\RepositoryInterface\InMemoryImplementation as CreditCardRepository;
-use Smolarium\Commissions\Infrastructure\Domain\Country\RepositoryInterface\InMemoryImplementation as CountryRepository;
-use Smolarium\Commissions\Infrastructure\Domain\Money\ExchangerInterface\InMemoryImplementation as MoneyExchanger;
+use Smolarium\Commissions\Infrastructure\Domain\Commission\Calculator\FactoryInterface\FakeImplementation as CalculatorFactory;
 
 $application = new Application();
-// @todo use dependency injection container
-$processInputFileCommand = new ProcessInputFile(
-    new Calculator(
-        new CreditCardRepository(),
-        new CountryRepository(),
-        new MoneyExchanger()
-    )
-);
+$calculatorFactory = new CalculatorFactory();
+$calculator = $calculatorFactory->create();
+$processInputFileCommand = new ProcessInputFile($calculator);
 $application->add($processInputFileCommand);
 $application->run();

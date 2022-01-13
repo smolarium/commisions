@@ -5,9 +5,7 @@ declare(strict_types = 1);
 namespace Smolarium\Commissions\Infrastructure\Console\Command;
 
 use Smolarium\Commissions\Domain\Commission\Calculator;
-use Smolarium\Commissions\Domain\CreditCard\Bin;
-use Smolarium\Commissions\Domain\Money;
-use Smolarium\Commissions\Domain\Payment;
+use Smolarium\Commissions\Infrastructure\Domain\Payment\Factory\FromJsonImplementation as FromJsonPaymentFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,16 +34,8 @@ class ProcessInputFile extends Command
         if ($file = fopen($inputFilePath, "r")) {
             while (!feof($file)) {
                 $line = fgets($file);
-                $json = json_decode($line);
-                $commission = $this->calculator->calculate(new Payment(
-                    new Bin((int)$json->bin),
-                    new Money(
-                        (int)ceil($json->amount * 100), // In cents
-                        new Money\Currency(
-                            new Money\Currency\Code($json->currency)
-                        )
-                    )
-                ));
+                $payment = FromJsonPaymentFactory::createFromJson($line);
+                $commission = $this->calculator->calculate($payment);
                 echo number_format($commission->getMoney()->getAmount() / 100, 2) . PHP_EOL;
             }
 

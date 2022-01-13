@@ -8,9 +8,9 @@ use Smolarium\Commissions\Domain\CreditCard;
 use Smolarium\Commissions\Domain\CreditCard\Bin;
 use Smolarium\Commissions\Domain\CreditCard\Repository\NotFound;
 use Smolarium\Commissions\Domain\CreditCard\RepositoryInterface;
-use Smolarium\Commissions\Domain\Country\Code;
+use Smolarium\Commissions\Infrastructure\Domain\CreditCard\Factory\ScalarImplementation;
 
-class InMemoryImplementation implements RepositoryInterface
+class FakeImplementation implements RepositoryInterface
 {
     private const knownBins = [
         45717360 => ['code' => 'DK'],
@@ -28,9 +28,6 @@ class InMemoryImplementation implements RepositoryInterface
         }
 
         $countryCodeString = $this::knownBins[$binInt]['code'];
-        return new CreditCard(
-            $bin,
-            new Code($countryCodeString)
-        );
+        return ScalarImplementation::createFromScalar($bin->getBin(), $countryCodeString);
     }
 }

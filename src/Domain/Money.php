@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Smolarium\Commissions\Domain;
 
-use JetBrains\PhpStorm\Pure;
 use Smolarium\Commissions\Domain\Money\Currency;
 
 class Money
@@ -26,6 +25,15 @@ class Money
     public function getCurrency() : Currency
     {
         return $this->currency;
+    }
+
+    public function isEqual(Money $money) : bool
+    {
+        if (!$this->currency->isSame($money->getCurrency())) {
+            return false;
+        }
+
+        return $this->amount === $money->getAmount();
     }
 
     public function multiply(float $multiplier) : self

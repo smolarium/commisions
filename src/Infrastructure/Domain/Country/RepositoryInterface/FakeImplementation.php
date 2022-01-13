@@ -8,7 +8,7 @@ use Smolarium\Commissions\Domain\Country\Repository\NotFound;
 use Smolarium\Commissions\Domain\Country\Code;
 use Smolarium\Commissions\Domain\Country\RepositoryInterface;
 
-class InMemoryImplementation implements RepositoryInterface
+class FakeImplementation implements RepositoryInterface
 {
     private const knownCountries = [
         'DK',
