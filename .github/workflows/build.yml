@@ -22,6 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: PHPUnit tests
-          uses: php-actions/phpunit@v3
-          with:
-            configuration: tests/phpunit.xml
+        uses: php-actions/phpunit@v3
+        with:
+          configuration: tests/phpunit.xml
