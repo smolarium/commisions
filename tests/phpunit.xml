@@ -7,7 +7,7 @@
   </coverage>
   <testsuites>
     <testsuite name="Commissions">
-      <directory>./Unit/</directory>
+      <directory>./</directory>
     </testsuite>
   </testsuites>
   <logging/>

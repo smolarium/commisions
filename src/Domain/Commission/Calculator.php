@@ -21,6 +21,8 @@ class Calculator
     private CreditCardRepositoryInterface $creditCardRepository;
     private CountryRepositoryInterface $countryRepository;
     private ExchangerInterface $moneyExchanger;
+    private const chargeForEuropeanUnion = 0.1;
+    private const chargeForNotEuropeanUnion = 0.2;
 
     public function __construct(
         CreditCardRepositoryInterface $creditCardRepository,
@@ -47,7 +49,11 @@ class Calculator
         $country = $this->countryRepository->getByCode($countryCode);
         $euro = new Currency(new CurrencyCode('EUR'));
         $moneyInEuro = $this->moneyExchanger->exchange($payment->getMoney(), $euro);
-        $charge = (EuropeanUnionChecker::isFromEuropeanUnion($country) ? 0.1 : 0.2); //@todo extract those values as a dependency
+        $charge = (
+            EuropeanUnionChecker::isFromEuropeanUnion($country)
+            ? $this::chargeForEuropeanUnion
+            : $this::chargeForNotEuropeanUnion
+        );
         return new Commision($moneyInEuro->multiply($charge));
     }
 }
