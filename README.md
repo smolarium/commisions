@@ -1,5 +1,5 @@
 ### Requirements
-- PHP >= 7.4: https://www.php.net/manual/en/install.php
+- PHP 7.4: https://www.php.net/manual/en/install.php
 - Composer: https://getcomposer.org/download/
 
 ### Installation
@@ -8,7 +8,7 @@
 
 ### Usage
 
-`php bin/console.php` <- All required informations will be here (help included)
+`php bin/console.php app:process var/input.txt`
 
 ### Tests
 
