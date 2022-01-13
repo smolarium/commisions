@@ -1,10 +1,14 @@
-<phpunit cacheResult="false" bootstrap="./bootstrap.php">
-    <testsuites>
-        <testsuite name="Commissions">
-            <directory>./Unit/</directory>
-        </testsuite>
-    </testsuites>
-    <logging>
-        <log type="coverage-html" target="/tmp/report"/>
-    </logging>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" cacheResult="false" bootstrap="./bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <report>
+      <html outputDirectory="/tmp/report"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="Commissions">
+      <directory>./Unit/</directory>
+    </testsuite>
+  </testsuites>
+  <logging/>
 </phpunit>
