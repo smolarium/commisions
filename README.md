@@ -14,8 +14,8 @@
 ### Installation
 `docker build -t commissions .`
 ### Usage
-`docker run -it --rm --name commissions-runner -v "$PWD":/usr/src/commissions -w /usr/src/commissions php:7.4-cli php bin/console.php app:process var/example.txt`
+`docker run -it --rm --name commissions-runner -v "$PWD":/usr/src/commissions -w /usr/src/commissions commissions php bin/console.php app:process var/example.txt`
 
 As you can probably see, you can provide your own input file here
 ### Tests
-`docker run -it --rm --name commissions-tests -v "$PWD":/usr/src/commissions -w /usr/src/commissions php:7.4-cli php vendor/phpunit/phpunit/phpunit -c tests/phpunit.xml`
+`docker run -it --rm --name commissions-tests -v "$PWD":/usr/src/commissions -w /usr/src/commissions commissions php vendor/phpunit/phpunit/phpunit -c tests/phpunit.xml`
