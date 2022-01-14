@@ -4,7 +4,7 @@
     "autoload": {
         "psr-4": {
             "Smolarium\\Commissions\\": "src/",
-            "Smolarium\\Commissions\\Tests\\Unit\\": "tests/Unit/"
+            "Smolarium\\Commissions\\Tests\\Integration\\": "tests/Integration/"
         }
     },
     "authors": [
