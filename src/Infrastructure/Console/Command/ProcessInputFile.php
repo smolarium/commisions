@@ -31,18 +31,17 @@ class ProcessInputFile extends Command
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $inputFilePath = $input->getArgument('inputFile');
-        if ($file = fopen($inputFilePath, "r")) {
-            while (!feof($file)) {
-                $line = fgets($file);
-                $payment = FromJsonPaymentFactory::createFromJson($line);
-                $commission = $this->calculator->calculate($payment);
-                $output->writeln(number_format($commission->getMoney()->getAmount() / 100, 2));
-            }
-
-            fclose($file);
-            return Command::SUCCESS;
+        $file = fopen($inputFilePath, "r");
+        if ($file === false) {
+            return Command::INVALID;
         }
-
-        return Command::INVALID;
+        while (!feof($file)) {
+            $line = fgets($file);
+            $payment = FromJsonPaymentFactory::createFromJson($line);
+            $commission = $this->calculator->calculate($payment);
+            $output->writeln(number_format($commission->getMoney()->getAmount() / 100, 2));
+        }
+        fclose($file);
+        return Command::SUCCESS;
     }
 }
