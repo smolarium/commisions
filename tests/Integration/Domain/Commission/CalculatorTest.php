@@ -24,7 +24,7 @@ class CalculatorTest extends TestCase
         //Arrange
         $calculator = $this->getFakeCalculator();
         $payment = PaymentFactory::createFromScalar(45717360, 123.00, 'EUR');
-        $expectedMoney = MoneyFactory::createFromScalar(12.30, 'EUR');
+        $expectedMoney = MoneyFactory::createFromScalar(1.23, 'EUR');
 
         //Act
         $commission = $calculator->calculate($payment);
