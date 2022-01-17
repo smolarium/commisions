@@ -13,10 +13,10 @@ class FakeImplementation implements ExchangerInterface
 {
     private const knownCourses = [
         'EUR' => ['EUR' => 1],
-        'GBP' => ['EUR' => 1.236787292],
+        'GBP' => ['EUR' => 1.0928603433767],
         'DKK' => ['EUR' => 0.1340623154301627],
-        'JPY' => ['EUR' => 0.009672961645436389],
-        'USD' => ['EUR' => 0.7720673883225837],
+        'JPY' => ['EUR' => 0.0082870638932625],
+        'USD' => ['EUR' => 0.92361688371664],
     ];
 
     public function exchange(Money $money, Currency $exchangeTo) : Money
