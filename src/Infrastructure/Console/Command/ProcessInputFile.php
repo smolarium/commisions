@@ -36,7 +36,7 @@ class ProcessInputFile extends Command
                 $line = fgets($file);
                 $payment = FromJsonPaymentFactory::createFromJson($line);
                 $commission = $this->calculator->calculate($payment);
-                echo number_format($commission->getMoney()->getAmount() / 100, 2) . PHP_EOL;
+                $output->writeln(number_format($commission->getMoney()->getAmount() / 100, 2));
             }
 
             fclose($file);
