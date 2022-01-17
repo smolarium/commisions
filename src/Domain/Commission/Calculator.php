@@ -21,8 +21,8 @@ class Calculator
     private CreditCardRepositoryInterface $creditCardRepository;
     private CountryRepositoryInterface $countryRepository;
     private ExchangerInterface $moneyExchanger;
-    private const chargeForEuropeanUnion = 0.1;
-    private const chargeForNotEuropeanUnion = 0.2;
+    private const chargeForEuropeanUnion = 0.01;
+    private const chargeForNotEuropeanUnion = 0.02;
 
     public function __construct(
         CreditCardRepositoryInterface $creditCardRepository,
